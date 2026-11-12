@@ -1,0 +1,2 @@
+// Add a new calculation engine, input definition and result view behind a registry entry.
+export const modules=[{id:'retaining',name:'擁壁',icon:'▥',number:'01',available:true,engine:'RW-1.0'},{id:'foundation',name:'杭・基礎',icon:'▤',number:'02',available:false},{id:'drainage',name:'排水',icon:'≋',number:'03',available:false},{id:'reservoir',name:'調整池',icon:'▱',number:'04',available:false}];

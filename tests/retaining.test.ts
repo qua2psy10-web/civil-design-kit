@@ -1,0 +1,16 @@
+import {strict as a} from 'node:assert';
+import {calculate,defaults} from '../lib/retaining.ts';
+const close=(x:number,y:number)=>a.ok(Math.abs(x-y)<1e-8,`${x} != ${y}`);
+const r=calculate(defaults);a.equal(r.errors.length,0);close(r.values.Ka,1/3);close(r.values.Pa,19*16/6);close(r.values.Paq,40/3);
+close(r.values.W1,38.4);close(r.values.W2,34.56);close(r.values.W3,167.2);close(r.values.W4,0);
+close(r.values.Mr,38.4*.8+34.56*1.6+167.2*2.1);
+close(r.values.Mo,(19*16/6)*(.45+4/3)+(40/3)*(.45+2));
+a.equal(r.type,'逆T型');a.equal(calculate({...defaults,Bf:0}).type,'L型');
+a.ok(calculate({...defaults,B:.5}).errors.length);a.ok(calculate({...defaults,beta:30}).errors.length);a.ok(calculate({...defaults,H:NaN}).errors.length);
+a.ok(calculate({...defaults,q:100}).values.Fs_slide<r.values.Fs_slide);
+a.ok(calculate({...defaults,q:100}).checks.some(c=>!c.ok));
+const slope=calculate({...defaults,beta:10,Hb:.2});a.ok(slope.values.W4>0);close(slope.values.rise,.2);
+a.equal(calculate({...defaults,c:100}).values.Pa,r.values.Pa);
+a.ok(calculate({...defaults,cF:10}).values.qu>r.values.qu);
+const bad=calculate({...defaults,q:1000});a.ok(!bad.checks.find(c=>c.key==='e')?.ok);a.ok(!bad.checks.find(c=>c.key==='Fs_bearing')?.ok);
+console.log('PASS: Rankine limit, weights/centroids, moment balance, L/T type, geometry guard, load sensitivity, slope cap, cohesion policy, failure states');
