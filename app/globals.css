@@ -42,3 +42,20 @@
   .drainage .field-note, .drainage .notice-model, .drainage td, .drainage th { font-size: 9pt; }
   .drainage tr { break-inside: avoid; }
 }
+
+.footing-diagrams { color: #284d3e; }
+.footing-figure-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+.footing-figure-grid figure { margin: 0; min-width: 0; }
+.footing-figure-grid figcaption { font-size: 1rem; font-weight: 600; }
+.footing-figure-grid svg { display: block; width: 100%; max-width: 460px; margin: 8px auto; font-size: 16px; fill: #284d3e; }
+.footing-figure-grid p, .footing-explanation { font-size: .875rem; line-height: 1.8; margin: 8px 0; }
+.footing-key { display: flex; flex-wrap: wrap; gap: 12px; }
+.footing-unresolved { padding: 30px 16px; margin-top: 12px; background: #fff4eb; border: 1px solid #d9af98; border-radius: 6px; }
+.footing-explanation { border-top: 1px solid #dbe5de; padding-top: 12px; }
+@media(min-width:1400px) { .footing-figure-grid { grid-template-columns: repeat(2,minmax(0,1fr)); } }
+@media print {
+  .footing-diagrams { break-inside: avoid; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .footing-figure-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .footing-figure-grid p, .footing-explanation { font-size: 9pt; }
+  .footing-figure-grid svg { max-height: 240px; }
+}

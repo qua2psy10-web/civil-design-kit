@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
+import FoundationDiagram from './foundation-diagram';
 import { calculateFoundation, foundationExample, foundationFields, foundationVersion, type FoundationInput } from '../lib/foundation';
 
 const storageKey = 'civil-foundation-v1';
@@ -110,6 +111,7 @@ export default function Foundation() {
             </div>
             <p className="field-note">荷重は基礎底面中心に換算し、Nには基礎自重などの鉛直荷重を含めます。qaには同じ荷重条件に対応する総接地圧の許容値を入力してください。</p>
           </div>
+          {result && <FoundationDiagram input={input} result={result} />}
           <div className="panel">
             <div className="panel-heading"><h2>計算過程</h2><span className="muted">{foundationVersion}</span></div>
             {result ? <>
