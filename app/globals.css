@@ -27,3 +27,18 @@
   .foundation .field > div { height: auto; }
   .foundation .foundation-corners div { break-inside: avoid; }
 }
+
+.drainage { font-size: 1rem; }
+.drainage .subtitle, .drainage .field-note, .drainage .notice-model,
+.drainage .field > span, .drainage .compare-select, .drainage .check small,
+.drainage td, .drainage th, .drainage .actions button { font-size: .875rem; color: #466257; }
+.drainage .actions .primary { color: white; }
+.drainage .field small, .drainage .muted { font-size: .8125rem; color: #526b60; }
+.drainage .drainage-shape { margin-bottom: 20px; }
+.drainage .results { min-width: 0; }
+.drainage .table-wrap { overflow-x: auto; }
+@media print {
+  .drainage { font-size: 10pt; }
+  .drainage .field-note, .drainage .notice-model, .drainage td, .drainage th { font-size: 9pt; }
+  .drainage tr { break-inside: avoid; }
+}
